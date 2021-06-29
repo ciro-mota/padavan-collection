@@ -17,7 +17,7 @@ kill $(pgrep inadyn) 2> /dev/null
 curl -fsSL https://get.acme.sh | sh &> /dev/null
 
 ## Cert Generate
-/home/admin/.acme.sh/acme.sh -q --insecure --uninstall-cronjob --issue --dns dns_duckdns -d $ddns
+/home/admin/.acme.sh/acme.sh --insecure --server letsencrypt --issue --dns dns_duckdns -d $ddns 2> /dev/null
 
 ## Copy cert files
 cp $pathcrt/$ddns/$ddns.key /etc/storage/https/server.key
