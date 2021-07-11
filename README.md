@@ -200,5 +200,11 @@ As this is a simple shell script, you are free to enter any changes you want to 
 ```
 ### Bot Telegram
 sleep 30
-/etc/storage/tg_say.sh
+/etc/storage/tg_say.sh WAN Up, IP: $3
 ```
+
+Supported parameters represent:
+
+* $1 - WAN Action (Rise / Fall).
+* $2 - WAN interface name (for example eth3 or ppp0).
+* $3 - WAN IPv4 address.
