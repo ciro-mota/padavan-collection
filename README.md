@@ -4,6 +4,9 @@
 <img width="300" height="150" src="https://imgur.com/X2MlXSz.png">
 </p>
 
+<img src="https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/
+padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
+
 This Git brings together some procedures that can be used to get the best out of Padavan Firmware. These are procedures publicly disclosed in the [4pda community](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) and adapted for use. For the procedures below to work optimally, the firmware must be compiled on Prometheus with the following options enabled:
 
 ```
@@ -23,6 +26,7 @@ All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, bei
 4. [HTTPS local domain](#HTTPS-local-domain)
 5. [LEDs Control](#LEDs)
 6. [Telegram Alerts](#Telegram-Alerts)
+7. [ZeroTier](#ZeroTier)
 
 ## Enable Internal Entware
 
@@ -208,3 +212,47 @@ Supported parameters represent:
 * $1 - WAN Action (Rise / Fall).
 * $2 - WAN interface name (for example eth3 or ppp0).
 * $3 - WAN IPv4 address.
+
+## ZeroTier
+
+ZeroTier makes it possible to implement VPNs in environments with NAT or behind a firewall where no additional configuration is required, in other words, the router does not need to be exposed through the WAN port to allow external access.
+
+1. Whether on Internal Entware or USB, install the package `zerotier`:
+```
+opkg update
+opkg install zerotier
+```
+2. Run it: `zerotier-one -d`.
+
+3. Run the command `zerotier-cli info` where you will get something like:
+```
+200 info <YOU-ID> <ZeroTier Version> ONLINE
+```
+4. Make a brief registration on the [site](https://www.zerotier.com/#) and create your own network segment. You will receive a unique ID for this network.
+
+5. Connect to the network created with the command and the network ID obtained in the previous step: `zerotier-cli join <NETWORK-ID>`
+
+6. Return to the website and in the network settings by clicking on your ID, go to the "Members" section, you will see your router there. You must authorize it by checking the appropriate checkbox, naming is also possible.
+
+7. Now  we add the set of command lines below on the firmware interface, on **Advanced Settings** » **Customization** » **Scripts** » **Run After Firewall Rules Restarted:**:
+```
+### ZeroTier Rules
+iptables -I INPUT -i <NETWORK-IFACE> -j ACCEPT
+iptables -t nat -A PREROUTING -d <ZEROTIER-IP-ADDRESS> -p tcp --dport 443 -j DNAT --to-destination 192.168.1.1:443
+```
+
+Run `ip -br a` to get the network interface and IP address of the ZeroTier network that was previously configured.
+
+Change from 443 to 80 if you don't use HTTPS access.
+
+8. Add the command line below for activating the ZeroTier daemon when restarting the router, on **Advanced Settings** » **Customization** » **Scripts** » **Run After Router Started:**:
+```
+### ZeroTier
+/opt/bin/zerotier-one -d
+```
+
+9. Install a [ZeroTier client](https://www.zerotier.com/download/) on the device that will gain access to the router remotely, such as an Android smartphone for example. Enter your network ID and connect.
+
+You will have to repeat the same procedure from step 6 above to authorize access to the clients that will connect to this network.
+
+10. You will be able to access the router through ZeroTier's IP address, the same one chosen for the network in step 4.
