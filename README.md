@@ -26,6 +26,7 @@ All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, bei
 5. [LEDs Control](#LEDs)
 6. [Telegram Alerts](#Telegram-Alerts)
 7. [ZeroTier](#ZeroTier)
+8. [Padaroute](#Padarouter)
 
 ## Enable Internal Entware
 
@@ -255,3 +256,12 @@ Change from 443 to 80 if you don't use HTTPS access.
 You will have to repeat the same procedure from step 6 above to authorize access to the clients that will connect to this network.
 
 10. You will be able to access the router through ZeroTier's IP address, the same one chosen for the network in step 4.
+
+## Padarouter
+
+Padarouter brings a router management interface through an app for Android devices. Originally Chinese, the app has a version in English, Russian and Brazilian Portuguese, the latter translated by me.
+
+* [Download English version](https://github.com/ciro-mota/padavan-collection/raw/main/assets/com.padarouter.manager_en-US.apk) (Not fully translated, there are snippets of the app in Russian language.)
+* [Download Português Brasil version](https://github.com/ciro-mota/padavan-collection/raw/main/assets/com.padarouter.manager_pt-BR.apk) (Alguns erros de tradução são esperados.)
+
+<img src="https://raw.githubusercontent.com/ciro-mota/padavan-collection/main/assets/padarouter.jpg" alt="Padarouter" width="520" height="860"/>
