@@ -11,7 +11,7 @@ fi
 
 MSG="<b>$(nvram get computer_name)</b>: $@"
 
-wget -q --spider "https://api.telegram.org/bot$API_TOKEN/sendMessage?chat_id=$CHAT_ID&parse_mode=html&text=$MSG" 2>&1
+wget -q --spider "https://api.telegram.org/bot"$API_TOKEN"/sendMessage?chat_id=$CHAT_ID&parse_mode=html&text=$MSG" 2>&1
 
 if [ $? -eq 0 ]; then
     logger -t rstats "Message sent successfully."
