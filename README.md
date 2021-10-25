@@ -4,7 +4,7 @@
 <img width="300" height="150" src="https://imgur.com/X2MlXSz.png">
 </p>
 
-<img src="https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
+[![Versão-Português_Brasil](https://img.shields.io/badge/Versão-Português_Brasil-%2393CE0A?style=for-the-badge)](https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md) <img src="https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
 
 This Git brings together some procedures that can be used to get the best out of Padavan Firmware. These are procedures publicly disclosed in the [4pda community](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) and adapted for use. For the procedures below to work optimally, the firmware must be compiled on Prometheus with the following options enabled:
 
@@ -129,7 +129,7 @@ opkg install dnscrypt-proxy2
 
     3.4. Uncomment the line `tls_cipher_suite = [52392, 49199]`, this will cause a low use of resources when using DNSCrypt.
 
-    3.5. `fallback_resolver` and `netprobe_address` can be edited to a DNS server of your choice.
+    3.5. `fallback_resolver` and `netprobe_address` can be edited to a DNS server of your choice but different from those used in the default configuration (item 3.1).
 
 4. From an SSH session, run the command `/opt/etc/init.d/S09dnscrypt-proxy2 start` to enable DNSCrypt. 
 

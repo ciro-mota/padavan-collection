@@ -18,8 +18,9 @@ curl -fsSL https://get.acme.sh | sh 2>&1 /dev/null
 ## Cert Generate
 /home/admin/.acme.sh/acme.sh --insecure --server letsencrypt --issue --dns dns_duckdns -d $ddns \
 --cert-file /etc/storage/https/server.crt --key-file /etc/storage/https/server.key \
---ca-file /etc/storage/https/ca.key --fullchain-file /etc/storage/https/ca.crt 2> /dev/null
-/home/admin/.acme.sh/acme.sh --uninstall-cronjob 2> /dev/null
+--ca-file /etc/storage/https/ca.key --fullchain-file \
+/etc/storage/https/ca.crt 2> /dev/null ; /home/admin/.acme.sh/acme.sh \
+--uninstall-cronjob 2> /dev/null
 
 ## Restart httpd service
 kill "$(pgrep httpd)" 2> /dev/null
