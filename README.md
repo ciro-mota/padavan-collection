@@ -26,7 +26,7 @@ All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, bei
 5. [LEDs Control](#LEDs)
 6. [Telegram Alerts](#Telegram-Alerts)
 7. [ZeroTier](#ZeroTier)
-8. [Padaroute](#Padarouter)
+8. [Padarouter](#Padarouter)
 
 ## Enable Internal Entware
 
