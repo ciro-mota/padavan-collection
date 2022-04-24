@@ -6,6 +6,12 @@
 
 <img src="https://img.shields.io/badge/Licença-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
 
+## Disclaimer
+
+**Estes scripts apesar de funcionais, não receberão novas implementações devido ao firmware ter alcançado seu estado de EOL.**
+
+## Propósito
+
 Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do Firmware Padavan. Estes são procedimentos divulgados publicamente no [Fórum 4pda](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) e adaptado para uso. Para que os procedimentos abaixo funcionem de maneira ideal, o firmware deve ser compilado no Prometheus com as seguintes opções ativadas:
 
 ```

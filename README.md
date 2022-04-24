@@ -4,7 +4,13 @@
 <img width="300" height="150" src="https://imgur.com/X2MlXSz.png">
 </p>
 
-[![Versão-Português_Brasil](https://img.shields.io/badge/Versão-Português_Brasil-%2393CE0A?style=for-the-badge)](https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md) <img src="https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
+<a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md"><img src="https://img.shields.io/badge/Versão-Português_Brasil-%2393CE0A?style=for-the-badge"></a> <img src="https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
+
+## Disclaimer
+
+**These scripts, although functional, will not receive new implementations due to the firmware having reached its EOL state.**
+
+## Purpose
 
 This Git brings together some procedures that can be used to get the best out of Padavan Firmware. These are procedures publicly disclosed in the [4pda community](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) and adapted for use. For the procedures below to work optimally, the firmware must be compiled on Prometheus with the following options enabled:
 
