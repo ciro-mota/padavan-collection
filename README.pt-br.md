@@ -1,10 +1,19 @@
-# Procedimentos e otimizações para o Firmware Padavan
+</p>
+
+<table align="right">
+ <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.md">:us: English</a></td></tr>
+ <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md">:brazil: Português</a></td></tr>
+</table>
+
+<h2># Procedimentos e otimizações para o Firmware Padavan</h2>
 
 <p align="center">
 <img width="300" height="150" src="https://imgur.com/X2MlXSz.png">
 </p>
 
-<img src="https://img.shields.io/badge/Licença-GPLv3-blue.svg?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge"> <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white">
+![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge) 
+![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge)
 
 ## Disclaimer
 
