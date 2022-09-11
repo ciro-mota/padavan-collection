@@ -40,6 +40,8 @@ Repositório com atualizações mais recentes. [![GitLab stars](https://img.shie
 7. [ZeroTier](#ZeroTier)
 8. [Padarouter](#Padarouter)
 
+<a name="readme-top"></a>
+
 ## Ativando Entware interno
 
 O Entware interno aproveita um pequeno espaço da memória interna do roteador onde podem ser instalados programas e alguns arquivos salvos, sem a necessidade de um drive USB externo. Muito útil para instalar aplicativos não incluídos na construção de firmware padrão.

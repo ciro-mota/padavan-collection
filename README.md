@@ -40,6 +40,8 @@ Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/sta
 7. [ZeroTier](#ZeroTier)
 8. [Padarouter](#Padarouter)
 
+<a name="readme-top"></a>
+
 ## Enable Internal Entware
 
 Internal Entware makes use of a small space in the router's internal memory where programs can be installed and some files saved, without the need for an external USB drive. Very useful for installing applications not included in the standard firmware build.
