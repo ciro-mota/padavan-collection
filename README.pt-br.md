@@ -1,5 +1,5 @@
 </p>
-
+<a name="readme-top"></a>
 <table align="right">
  <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.md">:us: English</a></td></tr>
  <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md">:brazil: Português</a></td></tr>
@@ -39,8 +39,6 @@ Repositório com atualizações mais recentes. [![GitLab stars](https://img.shie
 6. [Alertas no Telegram](#Alertas-no-Telegram)
 7. [ZeroTier](#ZeroTier)
 8. [Padarouter](#Padarouter)
-
-<a name="readme-top"></a>
 
 ## Ativando Entware interno
 
