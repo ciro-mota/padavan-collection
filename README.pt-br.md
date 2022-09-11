@@ -15,23 +15,20 @@
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge)
 
-## Disclaimer
-
-**Estes scripts apesar de funcionais, não receberão novas implementações devido ao firmware ter alcançado seu estado de EOL.**
-
 ## Propósito
 
 Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do Firmware Padavan. Estes são procedimentos divulgados publicamente no [Fórum 4pda](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) e adaptado para uso. Para que os procedimentos abaixo funcionem de maneira ideal, o firmware deve ser compilado no Prometheus com as seguintes opções ativadas:
 
 ```
-CONFIG_FIRMWARE_INCLUDE_QOS=y
-CONFIG_FIRMWARE_INCLUDE_IMQ=y
-CONFIG_FIRMWARE_INCLUDE_IFB=y
 CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
 CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 ```
 
 Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**, sendo compatível com o Xiaomi Mi Router 3. No entanto, é possível que possam ser aplicados em outros modelos suportados por este firmware.
+
+## Atualizações
+
+Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng)
 
 ## Tabela de conteúdo
 1. [Ativando Entware interno](#Ativando-Entware-interno)
@@ -74,6 +71,8 @@ Aplique e reinicie o roteador depois disso.
 
 Esta é a lista de [pacotes disponíveis](https://bin.entware.net/armv7sf-k3.2/Packages.html) para instalação, devido ao tamanho pequeno do espaço de disco use-o com cautela.
 
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+
 ## AdBlock Integrado
 
 Através do Entware interno ou através do Entware habilitado em um drive USB externo, conseguimos gerar um arquivo host contendo listas de bloqueio de endereços, úteis para o controle dos pais e/ou para um AdBlock interno, trazendo assim maior segurança à rede local.
@@ -112,6 +111,8 @@ Você pode precisar editar regularmente o agente do usuário do script (parâmet
 
 ![](/assets/energized.png)
 
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+
 ## DNS Over HTTPS
 
 O tráfego DNS é geralmente vulnerável a invasores porque existe a possibilidade de "ouvir" sua comunicação e interceptar dados pessoais desprotegidos. Com isso, os provedores de serviços de Internet também podem monitorar seu tráfego e, possivelmente, coletar tudo sobre os sites que você visita.
@@ -149,6 +150,8 @@ opkg install dnscrypt-proxy2
 4. Em uma sessão SSH, execute o comando `/opt/etc/init.d/S09dnscrypt-proxy2 start` para habilitar o DNSCrypt. 
 
 ![](/assets/doh-ensi.png)
+
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 
 ## HTTPS com domínio local
 
@@ -191,6 +194,9 @@ address=/seu-dominio.duckdns.org/192.168.0.1
 Mude para o seu nome de domínio e endereço IP do roteador.
 
 ![](/assets/encrypt.png)
+
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+
 ## LEDs
 
 Você pode querer controlar quando os LEDs do roteador podem ser acesos ou não. Para fazer isso, adicione um regra no Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) para desligá-los:
@@ -201,6 +207,8 @@ Você pode querer controlar quando os LEDs do roteador podem ser acesos ou não.
 10 17 * * * leds_ether 1
 ```
 0 irá representar desligado e 1 ligado.
+
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 
 ## Alertas no Telegram
 
@@ -227,6 +235,8 @@ Os parâmetros suportados representam:
 * $1 - WAN Ação (Up / Down).
 * $2 - WAN nome da interface (por exemplo eth3 ou ppp0).
 * $3 - WAN endereço IPv4.
+
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 
 ## ZeroTier
 
@@ -272,6 +282,8 @@ Você terá que repetir o mesmo procedimento da etapa 6 acima para autorizar o a
 
 10. Você poderá acessar o roteador através do endereço IP do ZeroTier, o mesmo escolhido para a rede na etapa 4.
 
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+
 ## Padarouter
 
 Padarouter traz uma interface de gerenciamento de roteador através de um aplicativo para dispositivos Android. Originalmente chinês, o aplicativo possui uma versão em inglês, russo e português brasileiro, este último traduzido por mim.
@@ -281,3 +293,5 @@ Padarouter traz uma interface de gerenciamento de roteador através de um aplica
 * [Download Português Brasil version](https://github.com/ciro-mota/padavan-collection/raw/main/assets/com.padarouter.manager_pt-BR.apk) (Alguns erros de tradução são esperados.)
 
 <img src="https://raw.githubusercontent.com/ciro-mota/padavan-collection/main/assets/padarouter.jpg" alt="Padarouter" width="520" height="860"/>
+
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>

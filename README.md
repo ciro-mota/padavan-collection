@@ -15,23 +15,20 @@
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge)
 
-## Disclaimer
-
-**These scripts, although functional, will not receive new implementations due to the firmware having reached its EOL state.**
-
 ## Purpose
 
 This Git brings together some procedures that can be used to get the best out of Padavan Firmware. These are procedures publicly disclosed in the [4pda community](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) and adapted for use. For the procedures below to work optimally, the firmware must be compiled on Prometheus with the following options enabled:
 
 ```
-CONFIG_FIRMWARE_INCLUDE_QOS=y
-CONFIG_FIRMWARE_INCLUDE_IMQ=y
-CONFIG_FIRMWARE_INCLUDE_IFB=y
 CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
 CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 ```
 
 All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, being compatible with the Xiaomi Mi Router 3. However, it is possible that they can be applied in other models supported by this firmware.
+
+## Updates
+
+Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng)
 
 ## Table of Contents
 1. [Enable internal Entware](#Enable-Internal-Entware)
@@ -74,6 +71,8 @@ Apply and restart the router after that.
 
 This is the list of [packages available](https://bin.entware.net/armv7sf-k3.2/Packages.html) for installation, due to the small size use it with caution.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Integrated AdBlock
 
 Through Internal Entware or through Entware enabled for an external USB drive, we were able to generate a host file containing address block lists, useful for parental control and/or for an internal AdBlock and thus bringing greater security to the local network.
@@ -112,6 +111,8 @@ You may need to regularly edit the script's user agent (-U parameter in wget lin
 
 ![](/assets/energized.png)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## DNS Over HTTPS
 
 DNS traffic is usually vulnerable to attackers because there is the possibility of "hearing" your communication and intercepting unprotected personal data. With this Internet service providers can also monitor your traffic and possibly collect everything about the websites you visit.
@@ -149,6 +150,8 @@ opkg install dnscrypt-proxy2
 4. From an SSH session, run the command `/opt/etc/init.d/S09dnscrypt-proxy2 start` to enable DNSCrypt. 
 
 ![](/assets/doh-ensi.png)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## HTTPS local domain
 
@@ -191,6 +194,8 @@ address=/your-domain.duckdns.org/192.168.0.1
 Change to your domain name and router IP address.
 
 ![](/assets/encrypt.png)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 ## LEDs
 
 You may want to control when the router's LEDs can be lit or not. To do this, add a Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) rule for shutdown:
@@ -201,6 +206,8 @@ You may want to control when the router's LEDs can be lit or not. To do this, ad
 10 17 * * * leds_ether 1
 ```
 0 will represent off and 1 on.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Telegram Alerts
 
@@ -227,6 +234,8 @@ Supported parameters represent:
 * $1 - WAN Action (Rise / Fall).
 * $2 - WAN interface name (for example eth3 or ppp0).
 * $3 - WAN IPv4 address.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## ZeroTier
 
@@ -272,6 +281,8 @@ You will have to repeat the same procedure from step 6 above to authorize access
 
 10. You will be able to access the router through ZeroTier's IP address, the same one chosen for the network in step 4.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Padarouter
 
 Padarouter brings a router management interface through an app for Android devices. Originally Chinese, the app has a version in English, Russian and Brazilian Portuguese, the latter translated by me.
@@ -281,8 +292,13 @@ Padarouter brings a router management interface through an app for Android devic
 
 <img src="https://raw.githubusercontent.com/ciro-mota/padavan-collection/main/assets/padarouter.jpg" alt="Padarouter" width="520" height="860"/>
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Sponsoring
 
 If you like this work, give me it a star on GitHub, and consider supporting it:
 
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?business=VUS6R8TX53NTS&no_recurring=0&currency_code=USD)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
