@@ -28,17 +28,81 @@ Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**,
 
 ## Atualizações
 
-Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng)
+Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
+
+Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/timofeev36/padavan-ng?style=social)](https://gitlab.com/timofeev36/padavan-ng/-/commits/stable_branch)
 
 ## Tabela de conteúdo
-1. [Ativando Entware interno](#Ativando-Entware-interno)
-2. [AdBlock Integrado](#AdBlock-Integrado)
-3. [DNS Over HTTPS](#DNS-Over-HTTPS)
-4. [HTTPS com domínio local](#HTTPS-com-domínio-local)
-5. [Controle dos LEDs](#LEDs)
-6. [Alertas no Telegram](#Alertas-no-Telegram)
-7. [ZeroTier](#ZeroTier)
-8. [Padarouter](#Padarouter)
+1. [Construa seu próprio firmware do source code](Construa-seu-próprio-firmware-do-source-code)
+2. [Ativando Entware interno](#Ativando-Entware-interno)
+3. [AdBlock Integrado](#AdBlock-Integrado)
+4. [DNS Over HTTPS](#DNS-Over-HTTPS)
+5. [HTTPS com domínio local](#HTTPS-com-domínio-local)
+6. [Controle dos LEDs](#LEDs)
+7. [Alertas no Telegram](#Alertas-no-Telegram)
+8. [ZeroTier](#ZeroTier)
+9. [Padarouter](#Padarouter)
+
+## Construa seu próprio firmware do source code
+
+Este procedimento visa construir as atualizações do Padavan através de fontes que não estão disponíveis no script Prometheus. Este procedimento poderá ser utilizado com qualquer outro repositório do Git do Padavan.
+
+Usaremos um Docker Container por conveninencia, mas você poderá usar também uma máquina virtual Com o Ubuntu 22.04, apenas deve ser conferido se os pacotes de dependências estão instalados/atualizados.
+
+### - Iniciar o Container
+
+`docker container run -it ubuntu`
+
+### - Update, Upgrade e Instalação dos pacotes
+
+```bash
+apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
+```
+### - Clone Repo
+
+`git clone https://gitlab.com/mahtabctg/padavan-ng/-/tree/stable_branch`
+
+### - Definir Fakeroot
+
+`update-alternatives --set fakeroot /usr/bin/fakeroot-tcp`
+
+### - Construir a Toolchain
+
+```bash
+cd /padavan-ng/toolchain
+./clean_sources.sh 
+./build_toolchain.sh
+```
+
+### - Copiar e editar arquivo modelo de configuração
+
+Substitua para o modelo do seu router.
+
+```bash
+cd ../trunk
+cp configs/templates/xiaomi/mi-r3g.config .config
+nano .config
+```
+
+### - Ativar Configurações
+
+Esta etapa é semelhante ao que ocorre com o script Prometheus e onde você deverá ativar ou desativar a configurações que desejar.
+
+```bash
+CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
+CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
+```
+
+### - Construir o Firmware
+
+```bash
+./clear_tree.sh 
+./build_firmware.sh
+```
+
+### - Copiar o firmware do container para o Hospedeiro
+
+`podman cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
 
 ## Ativando Entware interno
 

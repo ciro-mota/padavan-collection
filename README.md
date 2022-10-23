@@ -28,17 +28,81 @@ All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, bei
 
 ## Updates
 
-Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng)
+Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
+
+Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/timofeev36/padavan-ng?style=social)](https://gitlab.com/timofeev36/padavan-ng/-/commits/stable_branch)
 
 ## Table of Contents
-1. [Enable internal Entware](#Enable-Internal-Entware)
-2. [Integrated AdBlock](#Integrated-AdBlock)
-3. [DNS Over HTTPS](#DNS-Over-HTTPS)
-4. [HTTPS local domain](#HTTPS-local-domain)
-5. [LEDs Control](#LEDs)
-6. [Telegram Alerts](#Telegram-Alerts)
-7. [ZeroTier](#ZeroTier)
-8. [Padarouter](#Padarouter)
+1. [Build your own firmware from source](Build-your-own-firmware-from-source)
+2. [Enable internal Entware](#Enable-Internal-Entware)
+3. [Integrated AdBlock](#Integrated-AdBlock)
+4. [DNS Over HTTPS](#DNS-Over-HTTPS)
+5. [HTTPS local domain](#HTTPS-local-domain)
+6. [LEDs Control](#LEDs)
+7. [Telegram Alerts](#Telegram-Alerts)
+8. [ZeroTier](#ZeroTier)
+9. [Padarouter](#Padarouter)
+
+## Build your own firmware from source
+
+This procedure aims to build Padavan updates from sources that are not available in the Prometheus script. This procedure can be used with any other Padavan Git repository.
+
+We will use a Docker Container for convenience, but you can also use a virtual machine. With Ubuntu 22.04, it only has to be checked if the dependency packages are installed/updated.
+
+### - Start Container
+
+`docker container run -it ubuntu`
+
+### - Update, Upgrade and Install Packages
+
+```bash
+apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
+```
+### - Clone Repo
+
+`git clone https://gitlab.com/mahtabctg/padavan-ng/-/tree/stable_branch`
+
+### - Set Fakeroot
+
+`update-alternatives --set fakeroot /usr/bin/fakeroot-tcp`
+
+### - Build Toolchain
+
+```bash
+cd /padavan-ng/toolchain
+./clean_sources.sh 
+./build_toolchain.sh
+```
+
+### - Copy model board and edit config
+
+Replace with your router model.
+
+```bash
+cd ../trunk
+cp configs/templates/xiaomi/mi-r3g.config .config
+nano .config
+```
+
+### - Enable Configs
+
+This step is similar to what happens with the Prometheus script and where you will have to enable or disable the settings you want.
+
+```bash
+CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
+CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
+```
+
+### - Build Firmware
+
+```bash
+./clear_tree.sh 
+./build_firmware.sh
+```
+
+### - Copy firmware from container to Host
+
+`podman cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
 
 ## Enable Internal Entware
 
