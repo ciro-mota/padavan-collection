@@ -260,6 +260,7 @@ Change to your domain name and router IP address.
 ![](/assets/encrypt.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## LEDs
 
 You may want to control when the router's LEDs can be lit or not. To do this, add a Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) rule for shutdown:
