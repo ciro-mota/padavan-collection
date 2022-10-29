@@ -60,7 +60,7 @@ apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive au
 ```
 ### - Clone Repo
 
-`git clone https://gitlab.com/mahtabctg/padavan-ng/-/tree/stable_branch`
+`git clone -b stable_branch https://gitlab.com/mahtabctg/padavan-ng.git`
 
 ### - Set Fakeroot
 
