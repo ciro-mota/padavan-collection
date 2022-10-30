@@ -64,7 +64,7 @@ apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive au
 
 ### - Set Fakeroot
 
-`update-alternatives --set fakeroot /usr/bin/fakeroot-tcp`
+`update-alternatives --set fakeroot /usr/bin/fakeroot-tcp 2>/dev/null`
 
 ### - Build Toolchain
 
@@ -102,7 +102,7 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 
 ### - Copy firmware from container to Host
 
-`podman cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
+`docker cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
 
 ## Enable Internal Entware
 
@@ -227,7 +227,7 @@ There are many DDNS services, free and paid. Specifically in our case it is reco
 
 2. Change `List of Allowed SSL Ciphers for HTTPS:` to:
 ```
-TLS_CHACHA20_POLY1305_SHA256:DH+AESGCM:DH+AES256:DH+AES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!MD5:!DSS`
+TLS_CHACHA20_POLY1305_SHA256:DH+AESGCM:DH+AES256:DH+AES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!MD5:!DSS
 ```
 3. Download the contents of the `codes/ca-cert` folder from this repository and add it to the router in the `/etc/storage` folder.
 
@@ -241,13 +241,9 @@ You will also need to edit line 12 of the script to point to your WAN interface,
 
 6. You can force the script to run at any time using the command: `/etc/storage/update-cert.sh` or `./update-cert.sh` if it is in the same directory as the file.
 
-7. Certificates are valid for 90 days. You may want to create a schedule for automatic update, for that add the line below with the desired period in **Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**:
+7. Certificates are valid for 90 days. Due to the permissions gap between acme and the built-in crontab, you will need to manually run this script:
 
-```
-### Update Cert
-0 9 */90 * * /etc/storage/update-cert.sh >/dev/null 2>&1
-```
-The update will take place every 90 days at 9 am.  
+`/etc/storage/script-cert.sh`
 
 8. Activate the redirect to the address at **LAN** » **DHCP Server** » **Custom Configuration File "dnsmasq.conf"** with the line below:
 
@@ -266,7 +262,7 @@ Change to your domain name and router IP address.
 You may want to control when the router's LEDs can be lit or not. To do this, add a Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) rule for shutdown:
 ```
 00 17 * * * leds_front 0
-00 17 * * * leds_ether 0  
+00 17 * * * leds_ether 0
 10 17 * * * leds_front 1
 10 17 * * * leds_ether 1
 ```

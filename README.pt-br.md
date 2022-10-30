@@ -64,7 +64,7 @@ apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive au
 
 ### - Definir Fakeroot
 
-`update-alternatives --set fakeroot /usr/bin/fakeroot-tcp`
+`update-alternatives --set fakeroot /usr/bin/fakeroot-tcp 2>/dev/null`
 
 ### - Construir a Toolchain
 
@@ -102,7 +102,7 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 
 ### - Copiar o firmware do container para o Hospedeiro
 
-`podman cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
+`docker cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
 
 ## Ativando Entware interno
 
@@ -227,7 +227,7 @@ Existem muitos serviços DDNS, gratuitos e pagos. Especificamente em nosso caso,
 
 2. Mude o campo `List of Allowed SSL Ciphers for HTTPS:` para:
 ```
-TLS_CHACHA20_POLY1305_SHA256:DH+AESGCM:DH+AES256:DH+AES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!MD5:!DSS`
+TLS_CHACHA20_POLY1305_SHA256:DH+AESGCM:DH+AES256:DH+AES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!MD5:!DSS
 ```
 3. Baixe o conteúdo da pasta `codes/ca-cert` deste repositório e adicione-o ao roteador na pasta `/etc/storage`.
 
@@ -241,13 +241,9 @@ Você também precisará editar a linha 12 do script para apontar para sua inter
 
 6. Você pode forçar a execução do script a qualquer momento usando o comando: `/etc/storage/update-cert.sh` ou `./update-cert.sh` se estiver no mesmo diretório do arquivo.
 
-7. Os certificados são válidos por 90 dias. Você pode querer criar uma programação para atualização automática, para isso adicione a linha abaixo com o período desejado em **Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**:
+7. Os certificados são válidos por 90 dias. Devido a falha de permissões entre o acme e o crontab integrado, você precisará executar manualmente este script:
 
-```
-### Update Cert
-0 9 */90 * * /etc/storage/update-cert.sh >/dev/null 2>&1
-```
-A atualização ocorrerá a cada 90 dias, às 9h.  
+`/etc/storage/script-cert.sh`
 
 8. Ative o redirecionamento para o endereço em **LAN** » **DHCP Server** » **Custom Configuration File "dnsmasq.conf"** adicionando a linha abaixo:
 
@@ -266,7 +262,7 @@ Mude para o seu nome de domínio e endereço IP do roteador.
 Você pode querer controlar quando os LEDs do roteador podem ser acesos ou não. Para fazer isso, adicione um regra no Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) para desligá-los:
 ```
 00 17 * * * leds_front 0
-00 17 * * * leds_ether 0  
+00 17 * * * leds_ether 0
 10 17 * * * leds_front 1
 10 17 * * * leds_ether 1
 ```
