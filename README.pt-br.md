@@ -28,10 +28,9 @@ Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**,
 
 ## Atualizações
 
-Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
-
 Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/timofeev36/padavan-ng?style=social)](https://gitlab.com/timofeev36/padavan-ng/-/commits/stable_branch)
 
+Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
 ## Tabela de conteúdo
 1. [Construa seu próprio firmware do source code](Construa-seu-próprio-firmware-do-source-code)
 2. [Ativando Entware interno](#Ativando-Entware-interno)
@@ -39,9 +38,10 @@ Repositório com atualizações mais recentes. [![GitLab stars](https://img.shie
 4. [DNS Over HTTPS](#DNS-Over-HTTPS)
 5. [HTTPS com domínio local](#HTTPS-com-domínio-local)
 6. [Controle dos LEDs](#LEDs)
-7. [Alertas no Telegram](#Alertas-no-Telegram)
-8. [ZeroTier](#ZeroTier)
-9. [Padarouter](#Padarouter)
+7. [Reinicialização Agendada](#Reinicialização_Agendada)
+8. [Alertas no Telegram](#Alertas-no-Telegram)
+9. [ZeroTier](#ZeroTier)
+10. [Padarouter](#Padarouter)
 
 ## Construa seu próprio firmware do source code
 
@@ -56,11 +56,27 @@ Usaremos um Docker Container por conveninencia, mas você poderá usar também u
 ### - Update, Upgrade e Instalação dos pacotes
 
 ```bash
-apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
+apt update && apt upgrade -y && apt -y install nano gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
 ```
 ### - Clone Repo
 
+`git clone https://gitlab.com/timofeev36/padavan-ng.git`
+
+Ou
+
 `git clone -b stable_branch https://gitlab.com/mahtabctg/padavan-ng.git`
+
+Caso você receba o seguinte erro:
+
+>error: RPC failed; curl 56 GnuTLS recv error (-9): Error decoding the received TLS packet.
+>error: 55553 bytes of body are still expected
+>fetch-pack: unexpected disconnect while reading sideband packet
+>fatal: early EOF
+>fatal: fetch-pack: invalid index-pack output
+
+Clone novamente o repo ou ajuste o parâmetro global como a seguir:
+
+`git config --global http.postBuffer 1048576000`
 
 ### - Definir Fakeroot
 
@@ -102,7 +118,11 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 
 ### - Copiar o firmware do container para o Hospedeiro
 
-`docker cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
+```bash
+for file in $(docker exec $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}') sh -c "ls padavan-ng/trunk/images/*.trx"); do
+        docker cp $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}'):${file} $HOME
+done
+```
 
 ## Ativando Entware interno
 
@@ -171,7 +191,6 @@ Se necessário, aplique permissões de execução ao script com `chmod u+x adblo
 00 8 * * 6 /etc/storage/adblock_update.sh >/dev/null 2>&1
 ```
 A atualização ocorrerá todos os domingos às 8h00.
-Você pode precisar editar regularmente o agente do usuário do script (parâmetro -U na linha wget) para uma versão mais recente do navegador.
 
 ![](/assets/energized.png)
 
@@ -267,6 +286,18 @@ Você pode querer controlar quando os LEDs do roteador podem ser acesos ou não.
 10 17 * * * leds_ether 1
 ```
 0 irá representar desligado e 1 ligado.
+
+<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+
+## Reinicialização Agendada
+
+Caso você precise definir uma reinicialização agendada do roteador, poderá utilizar o Cron para isso. Para fazer isso, adicione um regra no Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) e adicione:
+
+```
+00 06 * * */2 reboot
+```
+
+Isso fará com que o roteador seja reiniciado a cada dois dias as 06h da manhã. Ajuste para sua necessidade.
 
 <p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 

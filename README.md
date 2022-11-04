@@ -28,9 +28,9 @@ All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, bei
 
 ## Updates
 
-Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
-
 Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/timofeev36/padavan-ng?style=social)](https://gitlab.com/timofeev36/padavan-ng/-/commits/stable_branch)
+
+Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
 
 ## Table of Contents
 1. [Build your own firmware from source](Build-your-own-firmware-from-source)
@@ -39,9 +39,10 @@ Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/sta
 4. [DNS Over HTTPS](#DNS-Over-HTTPS)
 5. [HTTPS local domain](#HTTPS-local-domain)
 6. [LEDs Control](#LEDs)
-7. [Telegram Alerts](#Telegram-Alerts)
-8. [ZeroTier](#ZeroTier)
-9. [Padarouter](#Padarouter)
+7. [Scheduled Reboot](#Scheduled_Reboot)
+8. [Telegram Alerts](#Telegram-Alerts)
+9. [ZeroTier](#ZeroTier)
+10. [Padarouter](#Padarouter)
 
 ## Build your own firmware from source
 
@@ -56,11 +57,27 @@ We will use a Docker Container for convenience, but you can also use a virtual m
 ### - Update, Upgrade and Install Packages
 
 ```bash
-apt update && apt upgrade -y && apt -y install nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
+apt update && apt upgrade -y && apt -y install gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
 ```
 ### - Clone Repo
 
+`git clone https://gitlab.com/timofeev36/padavan-ng.git`
+
+Or
+
 `git clone -b stable_branch https://gitlab.com/mahtabctg/padavan-ng.git`
+
+If you receive the following error:
+
+>error: RPC failed; curl 56 GnuTLS recv error (-9): Error decoding the received TLS packet.
+>error: 55553 bytes of body are still expected
+>fetch-pack: unexpected disconnect while reading sideband packet
+>fatal: early EOF
+>fatal: fetch-pack: invalid index-pack output
+
+Re-clone the repo or adjust the global parameter as follows:
+
+`git config --global http.postBuffer 1048576000`
 
 ### - Set Fakeroot
 
@@ -102,7 +119,11 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 
 ### - Copy firmware from container to Host
 
-`docker cp [container-name]:/padavan-ng/trunk/images/[firmware-filename].trx $HOME`
+```bash
+for file in $(docker exec $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}') sh -c "ls padavan-ng/trunk/images/*.trx"); do
+        docker cp $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}'):${file} $HOME
+done
+```
 
 ## Enable Internal Entware
 
@@ -170,8 +191,7 @@ If necessary, apply execute permissions to the script with `chmod u+x adblock_up
 ### Update AdBlock
 00 8 * * 6 /etc/storage/adblock_update.sh >/dev/null 2>&1
 ```
-The update will take place every Sunday at 8:00 am.   
-You may need to regularly edit the script's user agent (-U parameter in wget line) to a newer version.
+The update will take place every Sunday at 8:00 am.
 
 ![](/assets/energized.png)
 
@@ -260,6 +280,7 @@ Change to your domain name and router IP address.
 ## LEDs
 
 You may want to control when the router's LEDs can be lit or not. To do this, add a Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) rule for shutdown:
+
 ```
 00 17 * * * leds_front 0
 00 17 * * * leds_ether 0
@@ -267,6 +288,18 @@ You may want to control when the router's LEDs can be lit or not. To do this, ad
 10 17 * * * leds_ether 1
 ```
 0 will represent off and 1 on.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Scheduled Reboot
+
+In case you need to set a scheduled restart of the router, you can use Cron for that. To do this, add a Crontab (**Administration** » **Services** » **Cron Daemon (Scheduler)?** » **Scheduler tasks (Crontab)**) and add that:
+
+```
+00 06 * * */2 reboot
+```
+
+This will cause the router to restart every other day at 06:00 am. Adjust it to your need.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
