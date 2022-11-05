@@ -28,8 +28,6 @@ Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**,
 
 ## Atualizações
 
-Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/timofeev36/padavan-ng?style=social)](https://gitlab.com/timofeev36/padavan-ng/-/commits/stable_branch)
-
 Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
 ## Tabela de conteúdo
 1. [Construa seu próprio firmware do source code](Construa-seu-próprio-firmware-do-source-code)
@@ -59,10 +57,6 @@ Usaremos um Docker Container por conveninencia, mas você poderá usar também u
 apt update && apt upgrade -y && apt -y install nano gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
 ```
 ### - Clone Repo
-
-`git clone https://gitlab.com/timofeev36/padavan-ng.git`
-
-Ou
 
 `git clone -b stable_branch https://gitlab.com/mahtabctg/padavan-ng.git`
 
