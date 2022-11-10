@@ -26,9 +26,6 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 
 Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**, sendo compatível com o Xiaomi Mi Router 3. No entanto, é possível que possam ser aplicados em outros modelos suportados por este firmware.
 
-## Atualizações
-
-Repositório com atualizações mais recentes. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
 ## Tabela de conteúdo
 1. [Construa seu próprio firmware do source code](Construa-seu-próprio-firmware-do-source-code)
 2. [Ativando Entware interno](#Ativando-Entware-interno)
@@ -45,7 +42,7 @@ Repositório com atualizações mais recentes. [![GitLab stars](https://img.shie
 
 Este procedimento visa construir as atualizações do Padavan através de fontes que não estão disponíveis no script Prometheus. Este procedimento poderá ser utilizado com qualquer outro repositório do Git do Padavan.
 
-Usaremos um Docker Container por conveninencia, mas você poderá usar também uma máquina virtual Com o Ubuntu 22.04, apenas deve ser conferido se os pacotes de dependências estão instalados/atualizados.
+Usaremos um Docker Container por conveniência, mas você poderá usar também uma máquina virtual Com o Ubuntu 22.04, apenas deve ser conferido se os pacotes de dependências estão instalados/atualizados.
 
 ### - Iniciar o Container
 

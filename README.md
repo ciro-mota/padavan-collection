@@ -26,10 +26,6 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 
 All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, being compatible with the Xiaomi Mi Router 3. However, it is possible that they can be applied in other models supported by this firmware.
 
-## Updates
-
-Upstream with latest updates. [![GitLab stars](https://img.shields.io/gitlab/stars/mahtabctg/padavan-ng?style=social)](https://gitlab.com/mahtabctg/padavan-ng/-/commits/stable_branch)
-
 ## Table of Contents
 1. [Build your own firmware from source](Build-your-own-firmware-from-source)
 2. [Enable internal Entware](#Enable-Internal-Entware)
