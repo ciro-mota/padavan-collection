@@ -326,9 +326,11 @@ Supported parameters represent:
 ZeroTier makes it possible to implement VPNs in environments with NAT or behind a firewall where no additional configuration is required, in other words, the router does not need to be exposed through the WAN port to allow external access.
 
 1. Whether on Internal Entware or USB, install the package `zerotier`:
+
+Due to malfunctions with newer versions of ZeroTier we must use a slightly older version of the package.
+
 ```
-opkg update
-opkg install zerotier
+wget https://bin.entware.net/mipselsf-k3.4/archive/zerotier_1.4.6-5_mipsel-3.4.ipk && opkg install zerotier_1.4.6-5_mipsel-3.4.ipk && opkg flag hold zerotier
 ```
 2. Run it: `zerotier-one -d`.
 

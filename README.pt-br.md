@@ -325,9 +325,11 @@ Os parâmetros suportados representam:
 O ZeroTier possibilita a implementação de VPNs em ambientes com NAT ou atrás de um firewall onde nenhuma configuração adicional é necessária, ou seja, o roteador não precisa ser exposto através da porta WAN para permitir acesso externo.
 
 1. Seja em Entware interno ou USB, instale o pacote `zerotier`:
+
+Devido a problemas de funcionamento com versões mais novas do ZeroTier nós devemos utilizar uma versão um pouco mais antiga do pacote.
+
 ```
-opkg update
-opkg install zerotier
+wget https://bin.entware.net/mipselsf-k3.4/archive/zerotier_1.4.6-5_mipsel-3.4.ipk && opkg install zerotier_1.4.6-5_mipsel-3.4.ipk && opkg flag hold zerotier
 ```
 2. Execute: `zerotier-one -d`.
 
