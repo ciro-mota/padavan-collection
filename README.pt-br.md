@@ -55,7 +55,7 @@ apt update && apt upgrade -y && apt -y install nano gnutls-bin nano autoconf aut
 ```
 ### - Clone Repo
 
-`git clone -b stable_branch https://gitlab.com/mahtabctg/padavan-ng.git`
+`git clone https://gitlab.com/timofeev36/padavan-ng.git`
 
 Caso você receba o seguinte erro:
 
