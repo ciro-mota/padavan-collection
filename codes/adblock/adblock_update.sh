@@ -16,7 +16,7 @@ wget -qO- "https://raw.githubusercontent.com/notracking/hosts-blocklists/master/
 wget -qO- "https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt" | awk -vr="$ENDPOINT_IP6" '{sub(/^::/, r)} $0 ~ "^"r' >> "$TMPDIR"
 
 #wget -qO- "https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/hosts.txt" | awk -vr="$ENDPOINT_IP4" '{sub(/^0.0.0.0/, r)} $0 ~ "^"r' >> "$TMPDIR"
-#wget -qO- "https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/hosts.txt" | sed -e 's/0.0.0.0/::/g' | awk -vr="$ENDPOINT_IP6" '{sub(/^::/, r)} $0 ~ "^"r' >> "$TMPDIR"
+#wget -qO- "https://raw.githubusercontent.com/badmojr/1Hosts/master/Lite/hosts.txt" | sed -e 's/0.0.0.0/::/g' | awk -vr="$ENDPOINT_IP6" '{sub(/^::/, r)} $0 ~ "^"r' | tail -n +5 >> "$TMPDIR"
 
 
 ## Add blacklist, if non-empty
