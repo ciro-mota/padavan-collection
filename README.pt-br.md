@@ -183,8 +183,6 @@ Se necessário, aplique permissões de execução ao script com `chmod u+x adblo
 ```
 A atualização ocorrerá todos os domingos às 8h00.
 
-![](/assets/energized.png)
-
 <p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 
 ## DNS Over HTTPS

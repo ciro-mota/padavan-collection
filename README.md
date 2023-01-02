@@ -183,8 +183,6 @@ If necessary, apply execute permissions to the script with `chmod u+x adblock_up
 ```
 The update will take place every Sunday at 8:00 am.
 
-![](/assets/energized.png)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## DNS Over HTTPS
