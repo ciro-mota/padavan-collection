@@ -27,16 +27,17 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**, sendo compatível com o Xiaomi Mi Router 3. No entanto, é possível que possam ser aplicados em outros modelos suportados por este firmware.
 
 ## Tabela de conteúdo
-1. [Construa seu próprio firmware do source code](Construa-seu-próprio-firmware-do-source-code)
-2. [Ativando Entware interno](#Ativando-Entware-interno)
-3. [AdBlock Integrado](#AdBlock-Integrado)
-4. [DNS Over HTTPS](#DNS-Over-HTTPS)
-5. [HTTPS com domínio local](#HTTPS-com-domínio-local)
-6. [Controle dos LEDs](#LEDs)
-7. [Reinicialização Agendada](#Reinicialização_Agendada)
-8. [Alertas no Telegram](#Alertas-no-Telegram)
-9. [ZeroTier](#ZeroTier)
-10. [Padarouter](#Padarouter)
+1. [Construa seu próprio firmware do source code](#Construa-seu-próprio-firmware-do-source-code)
+2. [Usando metodo antigo com o Prometheus e Docker](Usando-metodo-antigo-com-o-Prometheus-e-Docker)
+3. [Ativando Entware interno](#Ativando-Entware-interno)
+4. [AdBlock Integrado](#AdBlock-Integrado)
+5. [DNS Over HTTPS](#DNS-Over-HTTPS)
+6. [HTTPS com domínio local](#HTTPS-com-domínio-local)
+7. [Controle dos LEDs](#LEDs)
+8. [Reinicialização Agendada](#Reinicialização-Agendada)
+9. [Alertas no Telegram](#Alertas-no-Telegram)
+10. [ZeroTier](#ZeroTier)
+11. [Padarouter](#Padarouter)
 
 ## Construa seu próprio firmware do source code
 
@@ -51,11 +52,11 @@ Usaremos um Docker Container por conveniência, mas você poderá usar também u
 ### - Update, Upgrade e Instalação dos pacotes
 
 ```bash
-apt update && apt upgrade -y && apt -y install nano gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
+apt update && apt upgrade -y && apt -y install nano gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential ca-certificates cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
 ```
 ### - Clone Repo
 
-`git clone https://gitlab.com/timofeev36/padavan-ng.git`
+`git clone https://gitlab.com/hadzhioglu/padavan-ng.git`
 
 Caso você receba o seguinte erro:
 
@@ -113,6 +114,18 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 for file in $(docker exec $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}') sh -c "ls padavan-ng/trunk/images/*.trx"); do
         docker cp $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}'):${file} $HOME
 done
+```
+
+## Usando metodo antigo com o Prometheus e Docker
+
+You can use the Prometheus script mounted under a Docker Container to generate older firmware images. Just download the attached Dockerfile in this Git, build and run.
+
+```bash
+docker imagem build -t prometheus /path/to/Dockerfile
+```
+
+```bash
+docker container run -it --name prometheus <containerID>
 ```
 
 ## Ativando Entware interno

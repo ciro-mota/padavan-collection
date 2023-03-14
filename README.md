@@ -27,16 +27,17 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, being compatible with the Xiaomi Mi Router 3. However, it is possible that they can be applied in other models supported by this firmware.
 
 ## Table of Contents
-1. [Build your own firmware from source](Build-your-own-firmware-from-source)
-2. [Enable internal Entware](#Enable-Internal-Entware)
-3. [Integrated AdBlock](#Integrated-AdBlock)
-4. [DNS Over HTTPS](#DNS-Over-HTTPS)
-5. [HTTPS local domain](#HTTPS-local-domain)
-6. [LEDs Control](#LEDs)
-7. [Scheduled Reboot](#Scheduled_Reboot)
-8. [Telegram Alerts](#Telegram-Alerts)
-9. [ZeroTier](#ZeroTier)
-10. [Padarouter](#Padarouter)
+1. [Build your own firmware from source](#Build-your-own-firmware-from-source)
+2. [Using old method with Prometheus and Docker](#Using-old-method-with-Prometheus-and-Docker)
+3. [Enable internal Entware](#Enable-Internal-Entware)
+4. [Integrated AdBlock](#Integrated-AdBlock)
+5. [DNS Over HTTPS](#DNS-Over-HTTPS)
+6. [HTTPS local domain](#HTTPS-local-domain)
+7. [LEDs Control](#LEDs)
+8. [Scheduled Reboot](#Scheduled-Reboot)
+9. [Telegram Alerts](#Telegram-Alerts)
+10. [ZeroTier](#ZeroTier)
+11. [Padarouter](#Padarouter)
 
 ## Build your own firmware from source
 
@@ -51,11 +52,11 @@ We will use a Docker Container for convenience, but you can also use a virtual m
 ### - Update, Upgrade and Install Packages
 
 ```bash
-apt update && apt upgrade -y && apt -y install gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
+apt update && apt upgrade -y && apt -y install gnutls-bin nano autoconf autoconf-archive automake autopoint bison build-essential ca-certificates cmake cpio curl doxygen fakeroot flex gawk gettext git gperf help2man kmod libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libblkid-dev libjpeg-dev libsqlite3-dev libexif-dev libid3tag0-dev libogg-dev libvorbis-dev libflac-dev libc-ares-dev libcurl4-openssl-dev libdevmapper-dev libev-dev libevent-dev libkeyutils-dev libmpc-dev libmpfr-dev libsqlite3-dev libssl-dev libtool libudev-dev libxml2-dev libncurses5-dev libltdl-dev libtool-bin locales nano netcat pkg-config ppp-dev python3 python3-docutils texinfo unzip uuid uuid-dev wget xxd zlib1g-dev
 ```
 ### - Clone Repo
 
-`git clone https://gitlab.com/timofeev36/padavan-ng.git`
+`git clone https://gitlab.com/hadzhioglu/padavan-ng.git`
 
 If you receive the following error:
 
@@ -113,6 +114,18 @@ CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
 for file in $(docker exec $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}') sh -c "ls padavan-ng/trunk/images/*.trx"); do
         docker cp $(docker container ls -a | grep -e 'ubuntu:latest' | grep -e 'Up' | awk '{print $1}'):${file} $HOME
 done
+```
+
+## Using old method with Prometheus and Docker
+
+You can use the Prometheus script mounted under a Docker Container to generate older firmware images. Just download the attached Dockerfile in this Git, build and run.
+
+```bash
+docker imagem build -t prometheus /path/to/Dockerfile
+```
+
+```bash
+docker container run -it --name prometheus <containerID>
 ```
 
 ## Enable Internal Entware
