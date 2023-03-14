@@ -116,7 +116,7 @@ for file in $(docker exec $(docker container ls -a | grep -e 'ubuntu:latest' | g
 done
 ```
 
-<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Using old method with Prometheus and Docker
 
@@ -130,7 +130,7 @@ docker imagem build -t prometheus /path/to/Dockerfile
 docker container run -it --name prometheus <containerID>
 ```
 
-<p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Enable Internal Entware
 
