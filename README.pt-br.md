@@ -118,7 +118,7 @@ done
 
 ## Usando metodo antigo com o Prometheus e Docker
 
-You can use the Prometheus script mounted under a Docker Container to generate older firmware images. Just download the attached Dockerfile in this Git, build and run.
+Você pode utilizar o script Prometheus montado sob um Docker Container para gerar imagens mais antigas do firmware. Basta baixar o Dockerfile em anexo neste Git, construir e executar.
 
 ```bash
 docker imagem build -t prometheus /path/to/Dockerfile
