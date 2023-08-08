@@ -13,7 +13,11 @@
 
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge) 
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
-![GitHub last commit](https://img.shields.io/github/last-commit/ciro-mota/padavan-collection?style=for-the-badge)
+
+
+## ⚠️ Warning
+
+If your device supports OpenWrt you should really consider installing it over Padavan. Padavan is built on a very old version of the Linux Kernel and has had little support from community developers over the last few years, in addition to already having obsolete packages [such as ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). By migrating to OpenWrt you will be supported by good documentation, periodic updates and great community support.
 
 ## Purpose
 
