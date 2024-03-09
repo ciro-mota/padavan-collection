@@ -1,7 +1,8 @@
-</p>
 <table align="right">
     <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md">:brazil: Português</a></td></tr>
 </table>
+
+</br>
 
 <h2>Procedures and otimizations to Padavan Firmware Router</h2>
 
