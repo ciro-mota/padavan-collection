@@ -1,10 +1,10 @@
 <table align="right">
-    <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.md">:us: English</a></td></tr>
+    <tr><td><a href="https://github.com/ciro-mota/padavan-collection">:us: English</a></td></tr>
 </table>
 
 </br>
 
-<h2># Procedimentos e otimizações para o Firmware Padavan</h2>
+<h2>Procedimentos e otimizações para o Firmware Padavan</h2>
 
 <p align="center">
     <img width="300" height="150" src="https://github.com/ciro-mota/padavan-collection/blob/main/assets/logo.png?raw=true">
