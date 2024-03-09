@@ -1,32 +1,34 @@
 </p>
-<a name="readme-top"></a>
 <table align="right">
- <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.md">:us: English</a></td></tr>
- <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md">:brazil: Português</a></td></tr>
+    <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.md">:us: English</a></td></tr>
 </table>
 
 <h2># Procedimentos e otimizações para o Firmware Padavan</h2>
 
 <p align="center">
-<img width="300" height="150" src="https://imgur.com/X2MlXSz.png">
+    <img width="300" height="150" src="https://github.com/ciro-mota/padavan-collection/blob/main/assets/logo.png?raw=true">
 </p>
 
-![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge) 
+![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge)
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
-## ⚠️ Atenção
-
-Se o seu dispositivo suporta o OpenWrt você deveria realmente considerar a sua instalação em subsituição ao Padavan. Padavan é construído sob uma versão muito antiga do Kernel Linux e vem ao longo dos últimos anos contando com pouco suporte de desenvolvedores da comunidade, além de já contar com pacotes obsoletos [como é o caso do ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). Ao migrar para o OpenWrt você contará com suporte a boa documentação, atualizações periódicas e grande suporte da comunidade.
+> [!WARNING]\
+>Se o seu dispositivo suporta o OpenWrt você deveria realmente considerar a sua instalação em subsituição ao Padavan. Padavan é construído sob uma versão muito antiga do >Kernel Linux e vem ao longo dos últimos anos contando com pouco suporte de desenvolvedores da comunidade, além de já contar com pacotes obsoletos [como é o caso do ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). Ao migrar para o OpenWrt você contará com suporte a boa documentação, atualizações periódicas e grande suporte da comunidade.
 ## Propósito
 
-Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do Firmware Padavan. Estes são procedimentos divulgados publicamente no [Fórum 4pda](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) e adaptado para uso. Para que os procedimentos abaixo funcionem de maneira ideal, o firmware deve ser compilado no Prometheus com as seguintes opções ativadas:
+Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do Firmware Padavan. Estes são procedimentos divulgados publicamente no [Fórum 4pda](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) e adaptado para uso. 
 
-```
-CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
-CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
-```
+> [!TIP]
+>Para que os procedimentos abaixo funcionem de maneira ideal, o firmware deve ser compilado no Prometheus com as seguintes opções ativadas:
+>```
+>CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
+>CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
+>```
 
-Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**, sendo compatível com o Xiaomi Mi Router 3. No entanto, é possível que possam ser aplicados em outros modelos suportados por este firmware.
+> [!NOTE]\
+>Todos esses procedimentos foram testados e usados em um **Xiaomi Mi Router 3G**, sendo compatível com o Xiaomi Mi Router 3. No entanto, é possível que possam ser aplicados em outros modelos suportados por este firmware.
+
+<a name="readme-top"></a>
 
 ## Tabela de conteúdo
 1. [Construa seu próprio firmware do source code](#Construa-seu-próprio-firmware-do-source-code)

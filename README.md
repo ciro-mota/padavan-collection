@@ -1,34 +1,36 @@
 </p>
-<a name="readme-top"></a>
 <table align="right">
- <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.md">:us: English</a></td></tr>
- <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md">:brazil: Português</a></td></tr>
+    <tr><td><a href="https://github.com/ciro-mota/padavan-collection/blob/main/README.pt-br.md">:brazil: Português</a></td></tr>
 </table>
 
 <h2>Procedures and otimizations to Padavan Firmware Router</h2>
 
 <p align="center">
-<img width="300" height="150" src="https://imgur.com/X2MlXSz.png">
+    <img width="300" height="150" src="https://github.com/ciro-mota/padavan-collection/blob/main/assets/logo.png?raw=true">
 </p>
 
-![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge) 
+![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge)
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 
-## ⚠️ Warning
-
-If your device supports OpenWrt you should really consider installing it over Padavan. Padavan is built on a very old version of the Linux Kernel and has had little support from community developers over the last few years, in addition to already having obsolete packages [such as ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). By migrating to OpenWrt you will be supported by good documentation, periodic updates and great community support.
+> [!WARNING]
+>If your device supports OpenWrt you should really consider installing it over Padavan. Padavan is built on a very old version of the Linux Kernel and has had little >support from community developers over the last few years, in addition to already having obsolete packages [such as ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). By migrating to OpenWrt you will be supported by good documentation, periodic updates and great community support.
 
 ## Purpose
 
-This Git brings together some procedures that can be used to get the best out of Padavan Firmware. These are procedures publicly disclosed in the [4pda community](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) and adapted for use. For the procedures below to work optimally, the firmware must be compiled on Prometheus with the following options enabled:
+This Git brings together some procedures that can be used to get the best out of Padavan Firmware. These are procedures publicly disclosed in the [4pda community](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) and adapted for use. 
 
-```
-CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
-CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
-```
+> [!TIP]
+>For the procedures below to work optimally, the firmware must be compiled on Prometheus with the following options enabled:
+>```
+>CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y
+>CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y
+>```
 
-All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, being compatible with the Xiaomi Mi Router 3. However, it is possible that they can be applied in other models supported by this firmware.
+> [!NOTE]
+>All these procedures have been tested and used in a **Xiaomi Mi Router 3G**, being compatible with the Xiaomi Mi Router 3. However, it is possible that they can be applied in other models supported by this firmware.
+
+<a name="readme-top"></a>
 
 ## Table of Contents
 1. [Build your own firmware from source](#Build-your-own-firmware-from-source)
@@ -404,6 +406,5 @@ Padarouter brings a router management interface through an app for Android devic
 If you like this work, give me it a star on GitHub, and consider supporting it:
 
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?business=VUS6R8TX53NTS&no_recurring=0&currency_code=USD)
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
