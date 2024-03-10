@@ -33,7 +33,7 @@ Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do
 
 ## Tabela de conteúdo
 1. [Construa seu próprio firmware do source code](#Construa-seu-próprio-firmware-do-source-code)
-2. [Usando método antigo com o Prometheus e Docker](Usando-metodo-antigo-com-o-Prometheus-e-Docker)
+2. [Usando método antigo com o Prometheus e Docker](#Usando-método-antigo-com-o-Prometheus-e-Docker)
 3. [Ativando Entware interno](#Ativando-Entware-interno)
 4. [AdBlock Integrado](#AdBlock-Integrado)
 5. [DNS Over HTTPS](#DNS-Over-HTTPS)
