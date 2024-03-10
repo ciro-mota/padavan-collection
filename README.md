@@ -15,7 +15,7 @@
 
 
 > [!WARNING]
->If your device supports OpenWrt you should really consider installing it over Padavan. Padavan is built on a very old version of the Linux Kernel and has had little >support from community developers over the last few years, in addition to already having obsolete packages [such as ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). By migrating to OpenWrt you will be supported by good documentation, periodic updates and great community support.
+>If your device supports [OpenWrt](https://openwrt.org/toh/views/toh_extended_all) you should really consider installing it over Padavan. Padavan is built on a very old version of the Linux Kernel and has had little support from community developers over the last few years, in addition to already having obsolete packages [such as ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). By migrating to OpenWrt you will be supported by good documentation, periodic updates and great community support.
 
 ## Purpose
 

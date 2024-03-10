@@ -14,7 +14,7 @@
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 > [!WARNING]\
->Se o seu dispositivo suporta o OpenWrt você deveria realmente considerar a sua instalação em subsituição ao Padavan. Padavan é construído sob uma versão muito antiga do >Kernel Linux e vem ao longo dos últimos anos contando com pouco suporte de desenvolvedores da comunidade, além de já contar com pacotes obsoletos [como é o caso do ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). Ao migrar para o OpenWrt você contará com suporte a boa documentação, atualizações periódicas e grande suporte da comunidade.
+>Se o seu dispositivo suporta o [OpenWrt](https://openwrt.org/toh/views/toh_extended_all) você deveria realmente considerar a sua instalação em substituição ao Padavan. Padavan é construído sob uma versão muito antiga do Kernel Linux e vem ao longo dos últimos anos contando com pouco suporte de desenvolvedores da comunidade, além de já contar com pacotes obsoletos [como é o caso do ZeroTier](https://github.com/Entware/Entware/issues/865#issuecomment-1318865432). Ao migrar para o OpenWrt você contará com suporte a boa documentação, atualizações periódicas e grande suporte da comunidade.
 ## Propósito
 
 Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do Firmware Padavan. Estes são procedimentos divulgados publicamente no [Fórum 4pda](https://4pda.to/forum/index.php?showtopic=837667), [Wiki](https://bitbucket.org/padavan/rt-n56u/wiki/browse/RU) e adaptado para uso. 
@@ -33,7 +33,7 @@ Este Git reúne alguns procedimentos que podem ser usados para obter o melhor do
 
 ## Tabela de conteúdo
 1. [Construa seu próprio firmware do source code](#Construa-seu-próprio-firmware-do-source-code)
-2. [Usando metodo antigo com o Prometheus e Docker](Usando-metodo-antigo-com-o-Prometheus-e-Docker)
+2. [Usando método antigo com o Prometheus e Docker](Usando-metodo-antigo-com-o-Prometheus-e-Docker)
 3. [Ativando Entware interno](#Ativando-Entware-interno)
 4. [AdBlock Integrado](#AdBlock-Integrado)
 5. [DNS Over HTTPS](#DNS-Over-HTTPS)
@@ -123,7 +123,7 @@ done
 
 <p align="right">(<a href="#readme-top">voltar para o topo</a>)</p>
 
-## Usando metodo antigo com o Prometheus e Docker
+## Usando método antigo com o Prometheus e Docker
 
 Você pode utilizar o script Prometheus montado sob um Docker Container para gerar imagens mais antigas do firmware. Basta baixar o Dockerfile em anexo neste Git, construir e executar.
 
