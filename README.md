@@ -34,17 +34,28 @@ This Git brings together some procedures that can be used to get the best out of
 <a name="readme-top"></a>
 
 ## Table of Contents
-1. [Build your own firmware from source](#Build-your-own-firmware-from-source)
-2. [Using old method with Prometheus and Docker](#Using-old-method-with-Prometheus-and-Docker)
-3. [Enable internal Entware](#Enable-Internal-Entware)
-4. [Integrated AdBlock](#Integrated-AdBlock)
-5. [DNS Over HTTPS](#DNS-Over-HTTPS)
-6. [HTTPS local domain](#HTTPS-local-domain)
-7. [LEDs Control](#LEDs)
-8. [Scheduled Reboot](#Scheduled-Reboot)
-9. [Telegram Alerts](#Telegram-Alerts)
-10. [ZeroTier](#ZeroTier)
-11. [Padarouter](#Padarouter)
+- [Purpose](#purpose)
+- [Table of Contents](#table-of-contents)
+- [Build your own firmware from source](#build-your-own-firmware-from-source)
+  - [- Start Container](#--start-container)
+  - [- Update, Upgrade and Install Packages](#--update-upgrade-and-install-packages)
+  - [- Clone Repo](#--clone-repo)
+  - [- Set Fakeroot](#--set-fakeroot)
+  - [- Build Toolchain](#--build-toolchain)
+  - [- Copy model board and edit config](#--copy-model-board-and-edit-config)
+  - [- Enable Configs](#--enable-configs)
+  - [- Build Firmware](#--build-firmware)
+  - [- Copy firmware from container to Host](#--copy-firmware-from-container-to-host)
+- [Using old method with Prometheus and Docker](#using-old-method-with-prometheus-and-docker)
+- [Enable Internal Entware](#enable-internal-entware)
+- [Integrated AdBlock](#integrated-adblock)
+- [DNS Over HTTPS](#dns-over-https)
+- [HTTPS local domain](#https-local-domain)
+- [LEDs](#leds)
+- [Scheduled Reboot](#scheduled-reboot)
+- [Telegram Alerts](#telegram-alerts)
+- [ZeroTier](#zerotier)
+- [Padarouter](#padarouter)
 
 ## Build your own firmware from source
 
@@ -399,13 +410,5 @@ Padarouter brings a router management interface through an app for Android devic
 * [Download Português Brasil version](https://github.com/ciro-mota/padavan-collection/raw/main/assets/com.padarouter.manager_pt-BR.apk) (Alguns erros de tradução são esperados.)
 
 <img src="https://raw.githubusercontent.com/ciro-mota/padavan-collection/main/assets/padarouter.jpg" alt="Padarouter" width="520" height="860"/>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Sponsoring
-
-If you like this work, give me it a star on GitHub, and consider supporting it:
-
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?business=VUS6R8TX53NTS&no_recurring=0&currency_code=USD)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
